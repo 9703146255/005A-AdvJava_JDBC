@@ -1,0 +1,8 @@
+delimiter $$
+create procedure getByNamePriceById(IN pid int(20),OUT pname varchar(30),OUT pprice double(20,2))
+begin
+select p_name,p_price from product where p_id=pid;
+end $$
+
+
+call getByNamePriceById(100,@pname,@pprice)

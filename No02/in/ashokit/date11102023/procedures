@@ -1,0 +1,22 @@
+
+
+//get table data 
+=================
+DELIMITER $$
+CREATE PROCEDURE getBookData()
+begin
+select * from book;
+end $$
+
+CALL getBookData()
+
+
+//get table data by using bookid
+================================
+DELIMITER $$
+CREATE PROCEDURE getBooksDataById(in bid int)
+begin
+select * from book where book_id=bid;
+end $$
+
+CALL getBooksDataById(1001)

@@ -1,0 +1,9 @@
+
+//Retrieve the data by using in out parameter
+============================================
+DELIMITER $$
+CREATE PROCEDURE getBookNameByPrice(IN book_price DECIMAL(10, 2), OUT book_name VARCHAR(255))
+BEGIN
+    SELECT title INTO book_name FROM book WHERE price = book_price;
+END $$
+DELIMITER ;
