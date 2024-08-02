@@ -1,0 +1,500 @@
+==========
+Servlets
+==========
+
+=> Servlet is a Technology given by Sun microsystem which is part of JEE API.
+
+=> Servlets technology is used to develop Web Applications using Java.
+
+
+=======================
+What is Web Application ?
+=======================
+
+=> The application which can be accessed by multiple users at a time is called as Web application.
+
+	Ex: Gmail, Facebook, Naukri, IRCTC etc...
+
+
+=> Web Applications are used for Customer to Business Communication ( C 2 B ). 
+
+=> Web application will run  inside a Server.
+
+Note: Server is a program which is used to run web applications
+
+	Ex:  Apache Tomcat, JBOSS, WebLogic, WebSphere, Glassfish etc..
+
+
+==========================
+Web Application Architecture
+==========================
+
+=> In Web application architecture mainley 2 actors will be available
+
+		1) Server
+
+		2) Client
+
+
+=> Client means a person / system which will send request to server to access web application.
+
+=> Server is a software / program which is responsible to process request and send response to clients.
+
+
+Note: Multiple clients can send requests to server at a time.
+
+==============================
+Steps to develop Web Applications
+==============================
+
+1) Setup Server Software  (Download  & Install)
+
+2) Create Dynamic Web Project using IDE
+
+3) Setup Build Path for required libraries (servlet-api.jar)
+
+4) Create Servlet Classes To handle request & response
+
+5) Map servlet classes to URL Patterns
+
+Note: Every Servlet should have unique URL pattern in the project.
+
+		/login    ---> LoginServlet
+
+		/register ---> RegisterServlet
+
+		/dashboard ---> DashoboardServlet
+
+6) Compile our source code (.class files will be created)
+
+7) Package .class files as war file  (WAR means Web Archieve)
+
+8) Deploy war file in Server.
+
+Note: Keeping the war file in the server for execution is called as Deployment.
+
+9) Once application deployment completed then we can access our application in the browser using application URL.
+
+		URL : http: // Server-Machine-IP : Server-Port / AppName / URL-Pattern
+
+===========================================================================
+
+Deployment :    Keeping the war file in the server  is called as Deployment.
+
+Re-Deployment : Deploying latest war file into server is called Re-Deployment.
+
+Un-Deployment : Removing war file from server is called as Un-Deployment.
+
+Hot Deployment : Deploying only modified files in the server.
+
+===========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================
+Apache Tomcat - WebServer
+=======================
+
+=> Apache Tomcat server developed by Apache Organization
+
+=> Apache Tomcat is free & open source web server
+
+=> Using Apache Tomcat we can run our java Web applications
+
+=> Apache Tomcat server developed using Java Language
+
+=> To run Tomcat Server Java s/w is mandatory
+
+=> Apache Tomcat Server Runs on Port Number 8080 (it is default port, we can change it also)
+
+========================
+Tomcat Setup in Windows
+========================
+
+=> We can setup Tomcat server in 2 ways
+
+	1) Download Installer software and install it
+
+	2) Download Zip file and extract it
+
+
+	URL : https://tomcat.apache.org/download-90.cgi
+
+============================
+Tomcat Server Folder Structure
+============================
+
+bin  : It containes binary files to start & stop the server (startup.bat & shutdown.bat)
+
+lib  :  It contains libraries (jars)
+
+conf : It contains configuration files (server.xml & tomcat-users.xml)
+
+webapps : This is called as Deployment folder (we need to keep war files here for deployment)
+
+temp : It contains temporary files we can delete them
+
+logs : It contains server execution log files
+
+
+
+Note: We can change tomcat server default port in "conf/server.xml" file
+
+=> We can configure users in tomcat to access tomcat server admin dashboard.
+
+			file name :   conf/tomcat-users.xml
+
+=> We can deploy war file from Tomcat Server Admin Dasboard as well..
+
+
+==============
+HTTP Protocol
+==============
+
+=>  Http stands for Hyper Text Transfer Protocol
+
+=> Http Protocol acting as Mediator between  client & server
+
+=> Http Protocol divided into 2 parts
+
+		1) Http Request
+
+		2) Http Response
+
+=============
+HTTP Methods
+==============
+
+GET    : To get the data from server
+
+POST  : To send data to server ( insertion )
+
+PUT  : To update the data
+ 
+DELETE : To delete the data
+
+=================
+Http Status Code
+=================
+
+1xx   ==> Information codes (100 - 199)
+
+2xx   ==> Succes Codes  (200 - 299)
+
+3xx  ==> Redirectional Codes (300 - 399)
+
+4xx  ==> Client Error Codes (400 - 499)
+
+5xx  ==> Server Error Codes (500 - 599)
+
+
+
+
+1) What is Web Application ?
+
+2) What is Client ?
+
+3) What is Server ?
+
+4) Web Application Architecture
+
+5) HTTP Protocol
+
+6) Http Request
+
+7) Http Response
+
+8) Http Methods
+
+9) HTTP Status Codes
+
+10) Apache Tomat Setup
+
+11) What is Deployment
+
+12) What is Servlet ?
+
+
+
+
+============
+Servlets API
+============
+
+=> Servlets is one api given by Sun Micro System as part of JEE
+
+=> Server vendors provided implementaiton for Servlet API
+
+=> Web Server contains below 2 containers
+
+		1) Servlet Container
+
+		2) JSP Container
+
+
+=> Servlet Container is used to execute Servlet applications
+
+=> JSP Container is used to execute JSP pages
+
+
+
+==========================================
+Steps to Develop WebApplication using Servlet
+==========================================
+
+1) Create Dynamic Web Project in IDE
+
+2) Add 'servlet-api.jar' file to project build path
+
+3) Create a Servlet class by extending HttpServlet class & write required methods to handle request & response.
+
+4) Configure servlet in web.xml (deployment descriptor) or use Annotation to map with url-pattern
+
+5) Run the web application using Server
+
+
+
+
+
+
+
+1) Create Dynamic Web Project
+
+2) Add servlet-api.jar  file to project build path
+
+3) Create Servlet class by extending properties from HttpServlet class and override doGet method
+
+4) Configure URL-Pattern for servlet ( web.xml / @WebServlet )
+
+5) Run the application using Server
+
+
+
+
+==================================
+How Server will process each request ?
+==================================
+
+1) Client will send request using Browser (GET or POST)
+
+2) Browser will convert that request into HTTP Request and will send to Server
+
+3) Server will recieve the request and it will create Request and Response objects
+
+4) Server will open Http Request and it will take the client request information and it will store into Request object.
+
+5) Server will identify the resource which is requested by the client based on URL( context-path and URL-Pattern).
+
+Note: If requested resource is not available then server will prepare Error response & it will store into Response object.
+
+6) Ir requested resource is available then server will call that servlet method by passing Request and Response Objects.
+
+7) Servlet will execute the business logic and it will write the response to Response Object.
+
+8) Server will send final Response to client which is available in Response object.
+
+Tote: To process client requests, server will use Threads. for every request one thread will be created.
+
+9) After sending response to client, server will delete request & response objects from memory.
+
+
+
+Note : HTTP is a stateless protocol that means it will not remember anything about previous requests. It will treat every request as first request.
+
+
+
+
+Note: When multiple users access our application at a time then burden will increase on the server.
+
+When burden increased then our server might crash. If server is crashed then our applicaiton will be down (nobody can access, it will effect our business).
+
+=> To reduce burden on the servers, we will deploy our application in multiple servers using Load Balancer concept.
+
+
+
+
+
+
+
+1) Develop Web Application To display Greet Message to user based on current hour
+
+
+6 AM - 11:55 AM  => Good Morning
+
+12:00 PM - 4:00 PM ===> Good Afternoon
+
+4:00 PM - 8:00 PM ===> Good Evening
+
+8:00 PM - 5:55 AM ==> Good Night
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=> Servlet is a technology is used to develop Web Applications
+
+=> Servlet is an API which is released from Sun Microsytem
+
+=> Servlet is an interface available in javax.servlet package
+
+
+
+===================
+What is web.xml file ?
+==================
+
+=> web.xml file is called as deployment descriptor file
+
+=> We can map servlets to url-pattern using web.xml file
+
+=> We can configure welcome-file using web.xml file
+
+
+====================web.xml=====================
+<web-app >
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>greetservlet</servlet-name>
+		<servlet-class>in.ashokit.GreetServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>greetservlet</servlet-name>
+		<url-pattern>/greet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+
+
+======================
+What is Welcome File ?
+======================
+
+<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+
+=> First it will check for index.html in the project, if it is available then it will load it as welcome page.
+
+=> If index.html not available then it will check for index.jsp page, if it is available then it will load it as welcome page.
+
+Note: If both files are not available then it will show error page with 404 status code (resource not found).
+
+Note: We can use any name for the welcome file
+
+==============================
+Accessing Servlet From HTML File
+==============================
+
+<body>
+		<h1>Welcome to My Application </h1>		
+		<a href="welcome"> Welcome Msg </a>  <br/>
+		<a href="greet"> Greet Msg </a>
+</body>
+
+
+Note:  First href tag accessing WelcomeServlet using url-pattern ("welcome")
+	     Second href tag accessing GreetServlet using url-pattern("greet")
+
+
+
+
+Requirement : Develop a web application to display Book Form. When use enter book data and submit the form then capture the data from the form using servlet and store the data into database using JDBC.
+
+Form Fields
+
+Book ID : 
+
+Book Name:
+
+Book Price : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
