@@ -1,0 +1,130 @@
+ASSIGNMENTS[28/09/2023]
+==========================
+1) What is interface
+2) How to create interfaces
+3) How to implement interfaces
+4) Interface changes in java 1.8
+5) Marker/tagged interfaces	
+6) What is serialization
+7) What is de-serialization
+
+1) What is interface
+==============
+=>An interface is a blueprint of a class which is having absract methods only upto java 1.7v
+
+=>by using interfaces we can achieve 100% abstraction
+
+    what we can achieve
+	===============
+	->we can achive loosly coupling
+	->we can achive multiple inheritence
+	->we can achive abstraction
+
+2) How to create interfaces
+====================
+interface interfacename
+=> interface Vehicle
+
+
+
+	sintax
+	-------
+	interface {
+
+  	  // declare constant fields
+	   // declare methods that abstract 
+  	  // by default.   
+		}
+
+3) How to implement interfaces
+=======================
+note: implements:-> we have to override the existing abstract methods
+=>EX1]
+	interface Vehicle
+	{
+		{
+		public void run();
+		}
+	}
+	class Car
+	{
+		public void run()
+		{
+		System.out.println("CAR IS RUNNING");
+		}
+	}
+
+
+=>EX2]
+	interface Bike
+	{
+		{
+		public void run();
+		}
+	}
+	class FZ extends Bike
+	{
+		public void run()
+		{
+		System.out.println("FZ IS RUNNING");
+		}
+	}
+
+
+=>EX3]
+	interface Bank
+	{
+		{
+		public double rateOfInterest();
+		}
+	}
+	class SBI implements Bank
+	{
+		public double rateOfInterest()
+		{
+		 return 3.5;
+		}
+	}
+	class Union implements Bank
+	{
+		public double rateOfInterest()
+		{
+		 return 3.5;
+		}
+	}
+
+
+4) Interface changes in java 1.8
+======================
+1)Default method
+2)Static method
+
+5) Marker/tagged interfaces[Serializable, Cloneable, Remote , RandomAccess, Readable and Appendable, AutoCloseable]
+=====================
+Empty inteface is called marker interface or tagged interface
+
+or 
+
+A interface dont have methods and fields or members called marker or tagged interface.
+
+ex: Serializable, Remote, RandomAccess, Cloneable
+
+	Note: If empty interface is there what is the use for that
+	-------------------------------------------------------------------------
+	JVM will provode special instructions to the Marker interface
+	ex:if company employee enter to the company that emplyee not opened the door, security guard see just ID  and open the door[this is the special behavior]
+
+
+
+1]Serializable, [conv->obj to bytestream]
+2]Cloneable,   [creates copy of object]
+3]Remote ,      [it will access remote methods], methods of objects to be invoked from other JVMs, Java Remote Method Invocation (RMI)
+4]RandomAccess, 
+5]Readable and Appendable,
+6]AutoCloseable]
+
+6) What is serialization
+================
+	The process of converting Java object into byteStream over a network called serialization.
+
+

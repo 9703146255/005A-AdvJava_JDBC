@@ -1,0 +1,164 @@
+
+============================
+Pre-requisites for Adv java
+============================
+
+=> core java
+
+	- java programming (fundamentals)
+	- arrays
+	- strings
+	- oops
+	- exception handling
+	- i/o streams (file input output operation)
+	- collections
+	- generics
+	- java 8
+
+=> database
+
+	- sql & pl/sql
+
+=> ui technologies
+	
+	- html + CSS
+	- js + bs
+
+
+===============
+course content
+===============
+
+1) Core java basics 
+
+2) Jdbc api (java <---> database)
+
+3) Servlets api (web applications)
+
+4) Jsp (java server pages) - (outdated)
+
+5) MVC (mode-view-controller)
+
+
+	duration : 30 days (+\- one week)
+
+	class timings : 11:30 am : 1:00 pm (mon-sat)
+
+	Lab timings : 9:00 am to 11:30 am
+
+	notes : hard copy material
+
+	videos : n/a
+
+
+
+
+
+
+*Topics Covered So far*
+
+1) What is single source file execution
+2) variables
+3) What is static control flow
+4) What is instance control flow
+5) Can we access instance variables in static method directley
+6) What is constructor
+7) What is hashcode ( ) method
+8) What is toString ( ) method
+9) Why we need private constructor
+10) What is singleton class ?
+11) How to make java class as singleton class
+12) How to access private variables outside of class
+13) How many ways are there to create object for the class
+14) What are the methods available in Object class.
+15) What is cloning
+16) What is serialization & de-serialization
+17) What is marker interface
+
+
+====================
+Project development
+====================
+
+
+Project : collection of programs
+
+why project : To reduce human efforts & to automate manual work
+
+	ex: ticket booking, net banking....
+
+
+======================
+Types of projects
+======================
+
+1) Stand-alone applications (desktop)		:	It can access by only one computer, run and install in our machine
+
+	ex: eclipse, os, calc...
+
+2) Web applications (C 2 B)			: 	It can be accessed multiple users at a time with inter in the browser	
+
+	ex: flipkart, facebook, irctc, gmail
+
+3) Distributed applications (webservices) (B2B)	:	
+
+	Ex : app-1 <-------> app-2
+
+		  gpay <-----> bank app
+
+		  makemytrip (.net) <----> irctc (java)
+
+		  passport <----> aadhar app
+
+		  angular app[froentend] <----> java project[backend]
+
+4) Mobile applications
+
+		ex: whatsapp, messenger
+
+
+==================================
+How to deliver project to client
+==================================
+
+
+-> Stand-alone project will be delivered as 'JAR' file
+
+-> Web-application will be delivered as 'WAR' file
+
+
+
+=======================
+how to create jar file
+=======================
+
+Right click on project -> Export -> Jar file
+
+
+================================================
+How to use one project class in another project
+================================================
+
+-> Add jar to project build path.
+
+=========================
+How to extract jar files or classes 
+=========================
+
+		go to our jar file folder	-->	cmd	->	incmdprompt [ jar xvf  jarfile.jar ]		->ex:	[jar xvf zipkin-2.5.2.jar]
+
+=======================
+How to read the jar classes
+=======================
+
+		first you should download the decompiler ui software	->	http://java-decompiler.github.io/		-> 	downloads[select windows]
+
+
+
+
+
+
+
+
+
+

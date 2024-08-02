@@ -1,0 +1,539 @@
+1) What is Singleton Design Pattern
+==========================
+1) What is singleton class ?
+====================
+		A class which is having only one object is called singletone class
+
+		we can't allow to create object to other for memory problems
+
+		in realtime project 95% we can use singletone class only
+
+
+	Class Login
+	{
+                    private static Login instance=null;
+
+  	  private Login()
+		{
+		}
+
+		puble static Login getInstance()
+		{
+			if(instance==null)
+			{
+			instance=new Login();
+			}
+			return instance;
+		}
+		
+		
+	}
+
+	
+
+ 	Class Main
+	{
+		public static void main(String... args)
+		{
+			Login l1=Login.getInstance();
+			syso(l1)
+ 			Login l2=Login.getInstance();
+			Syso(l2);
+		}
+	}
+
+
+
+2) How HashMap works internally	[ index=hashCode(k) &(n-1)]
+=========================
+Map<Employee, String> map=new HashMap<>();
+
+map.put(e1,”Dev”);
+
+map.put(e1,”Test”);
+
+map.put(e1,”AWS”);
+
+
+Map.put(e1,”Dev”);
+Put(K k, V v)
+index=hashCode(k)&(n-1)	==> hashCode==>32 ex
+
+ex: 32&15==>2 its indexing position is 2
+      
+	& ==> modular operator
+
+Note: if we get same index 2 times that is called hashing collision
+
+
+
+
+
+->When we create a HashMap object and adding values to that object map.put() it will internally its create Bucket structure 
+
+->since initial capacity of a hmap is 16[0 to 15] buckets. 
+
+->Each bucket its uses linked list internally And linked list contains number of nodes.
+
+->if we override the hashcode() method we should override the equals()
+
+->If same index value is there than it will override that value 
+
+->different value is there it will added to the next node
+
+->NOTE: If same node is comes 2times that’s concept is called hashing collision.
+
+
+3) Fail safe and fail fast collections
+========================
+
+	Fail fast 
+	-----------
+	While iterating the any collection object if trying to modify the structure
+	
+	 that means adding the element or removing the element 
+
+	we will get concurrent modification exception
+	
+	Iterator on ArrayList, HashMap classes are some examples of fail-fast Iterator.
+
+		-----------------------------------------------------------------------------------------------------------------------------
+		Map<String, String> cityCode = new HashMap<String, String>();
+		cityCode.put("Delhi", "India");
+		cityCode.put("Moscow", "Russia");
+		cityCode.put("New York", "USA");
+
+		Iterator iterator = cityCode.keySet().iterator();
+
+		while (iterator.hasNext()) {
+		System.out.println(cityCode.get(iterator.next()));
+
+		// adding an element to Map
+		// exception will be thrown on next call
+		// of next() method.
+		cityCode.put("Istanbul", "Turkey");XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+		-----------------------------------------------------------------------------------------------------------------------------
+
+
+	and fail safe
+	--------------
+	While iterating collection abject if we trying to change the structure by adding or removing element it will not through concurrent modification exception 
+
+	Internally it will works copy of array object
+
+	or 
+
+	This is because, they operate on the clone of the collection, not on the original collection and that’s why they are called fail-safe iterators. 
+
+	Iterator on CopyOnWriteArrayList, ConcurrentHashMap classes are examples of fail-safe Iterator
+
+	
+		CopyOnWriteArrayList<Integer> list= new CopyOnWriteArrayList<Integer>(new Integer[] { 1, 3, 5, 8 });
+		Iterator itr = list.iterator();
+		while (itr.hasNext()) {
+		Integer no = (Integer)itr.next();
+		System.out.println(no);
+		if (no == 8)
+
+		// This will not print,
+		// hence it has created separate copy
+		list.add(14);
+
+
+
+	
+	Note:
+	Concurrent Modification
+	--------------------------------
+	The Concurrent modification in Java is to modify an object while another task is running over it
+
+4) What is Constructor Chaining
+=======================================================================================
+
+=======================================================================================
+5) What are the methods available in Object class?[11]
+=======================================================================================
+	->Object is the super class of the all the classes in java
+		->hashcode()
+		->equals()
+		->toString()
+
+		->wait()
+		->wait()
+		->wait()
+
+		->notify()
+		->notifyAll()
+
+		->clone()
+		->className()
+		->finally()
+	
+=======================================================================================
+6) How many ways we can create Object for class in java ?
+=======================================================================================
+	We can create Object 5-ways
+	-------------------------------------
+	1)By using new keyword or operator
+	2)By using Class.forName() class newInstance() method
+	3)By using to clone Object by using clone() method we must implement clone() method
+	4)By using Constructor class, newInstance() method
+	5)By using Deserialaization 
+
+		//Way-1: by using new keyword
+		Employee emp1=new Employee();
+		System.out.println(emp1.hashCode());
+		
+		//way-2 by using Class.forName() having newInstance() method
+		Class clz=Class.forName("no04thiru.start290923.Employee");
+		Object obj=clz.newInstance();
+		Employee emp2=(Employee)obj;
+		System.out.println(emp2.hashCode());
+		
+		//way-3 by using clone() method
+				
+		Object clone = emp1.clone();
+		Employee emp3=(Employee)clone;
+		System.out.println(emp3.hashCode());
+		
+		//Way-4 by using constructor having newInstance() method
+		
+		Constructor<Employee> constructor = clz.getDeclaredConstructor();
+		 constructor.setAccessible(true);
+		 Employee emp4 = constructor.newInstance();
+		 System.out.println(emp4.hashCode());
+		 
+		 File f=new File("demo.ser");
+		 Employee emp = new Employee();
+         emp.setAge(30);
+
+         // Serialize the Employee object
+         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("demo.ser"));
+         oos.writeObject(emp);
+         oos.close();
+
+         //way-5: Deserialize the Employee object
+         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("demo.ser"));
+         Employee emp5 = (Employee) ois.readObject();
+         ois.close();
+
+         System.out.println(emp5.hashCode());
+
+=======================================================================================
+7) What is Cloning and why we need it ?
+=======================================================================================
+ 	Cloning
+	---------
+		->to create copy of object from existing object
+		->by using clone() method we can clone the existing object
+=======================================================================================
+8) String vs StringBuffer vs StringBuilder
+=======================================================================================
+String				StringBuffer		StringBuilder
+=======================================================================================
+Immutable				Mutable				Mutable
+synchronaised			synchronaised			not synchronaised
+thread safe			thead Safe				not a thread
+one thread we can  access at a time	one thread we can  access at a time	more than one thread we can  access at a time
+performance is low			performance is low			performance is good
+=======================================================================================
+9) What is Exception Hierarchy in Java ?
+=======================================================================================
+				Object
+	
+				Throwable
+		
+				Exception					Error
+			
+		ClassNotFoundException				  	VMError		-->StackOverFlowError
+	
+		IOException						AssertionError	-->OutOfMemoryError
+	
+		SQLException						LinkageError	-->VerifyError
+
+		RuntimeException
+			
+			ArithematicException
+		
+			NumberFormatException
+		
+			NullPointerException
+
+			IndexOutOfBoundsException	
+				
+				ArrayIndexOutOfBoundsException	
+			
+				StringIndexOutOfBoundsException	
+
+			
+		
+		
+=======================================================================================
+10) What is Serialization and De-Serialization ?
+=======================================================================================
+	Serialiazation:
+	-----------------
+		 the process of converting [ state of object to state of Byte stream] over the network called serialization.
+
+	DeSerialiazation: 
+	---------------------
+		the process of converting [ state of Byte stream to state of Object] over the network called Deserialization.
+
+		->Serialization			: 	Object => byte Stream  [it is travel over a network]
+
+		->Deserialization			:	byte Stream => Object  [it is travel over a network]
+
+		->Ser & Des 			: 	 platform independent [ser one plat & des another plat]
+
+		->Ser will call writeObject() method of ObjectOutputStream class
+
+		->Des will call  readObject() method of ObjectInputStream class
+
+		->We must impl Serializable  Marker interface[MI] for serializing the object.
+
+		->JVM will give additional capacity to[ser MI] conv Obj to Byte Stream
+
+	
+		Serialization	====>			FileOutputStream	------>	ObjectOutputStream		------>	File
+	
+		Deserialization	====>			FileInputStream	------>	ObjectInputStream		------>	File						
+
+
+
+
+
+
+=======================================================================================
+11) What is transient keyword in java?
+=======================================================================================
+	transient keyword:
+	=============
+		During the serialization, when we don't want an object to be serialized we can use a transient keyword.
+	
+		The transient keyword can be used with the data members of a class in order to avoid their serialization. 
+
+		For example, if a program accepts a user's login details and password. 
+
+		But we don't want to store the original password in the file. 
+	
+		Here, we can use transient keyword and when JVM reads the transient keyword it ignores the original value of the object and instead stores the default value of the object.
+
+		ex: modifier datatype varname;
+		
+		     private  transient  int a=10;
+
+
+			ex:
+			Output:
+			=======
+			Object has been serialized
+			Data before Deserialization.
+				name = ab
+				age = 20
+				a = 2
+				b = 1000
+			Object has been deserialized
+			Data after Deserialization.
+			name = ab
+			age = 20
+			a = 0	transient var	[it will take default value not store in file[we can use application level only]
+			b = 2000
+
+		
+
+
+=======================================================================================
+12) Diff between Comparable and Comparator
+=======================================================================================
+		Comparable 			Comparator
+=======================================================================================
+	->it is  a FI 				->it is  a FI 
+	
+	->Which is having compareTo() mathod		->Which is having compare() mathod
+
+	->It will return void 				->It will return Object
+
+
+	
+	
+=======================================================================================
+13) How many ways we can create Thread in java?
+=======================================================================================
+	We can create 3 ways
+	-------------------------
+	way1	->	By extending Thread class
+	
+	way2	->	By implementing Runnable interface
+
+	way3	->	By implementing Callable interface
+=======================================================================================
+14) Runnable vs Callable in Java
+=======================================================================================
+		Runnable				 Callable 
+=======================================================================================
+		it is a FI				it is a FI
+		Its have  run() method		its having call() method
+		We can create thread			We can create thread
+
+=======================================================================================
+15) What is Executor Framework in Java
+=======================================================================================
+=======================================================================================
+16) What is the contract between hashCode ( ) & equals ( ) methods
+=======================================================================================
+		->hashCode ( ) & equals ( ) Both are available in Object super Class
+
+		->If two objects are equal(according to equals() method) then the hashCode() method should return the same integer value for both the objects.[Hashing collision]
+		
+		->if we use equals() method must be ovverride hashCode() method
+
+		->equals() method it will compare the content 
+		
+		->hashCode() method, jvm will give unique code for each object
+		
+		
+
+=======================================================================================
+17) Checked Vs Unchecked exception
+=========================================================================================================================================
+	Checked Exception								Unchecked Exception	
+=========================================================================================================================================
+	It will come at the time of compile time is called compile time or checked exception		it will come at the time run time this is called runtime or unchecked exception
+	
+	Ex:	ClassNotFoundException						Ex:	ArithematicException
+	
+		IOException								NumberFormatException								
+	
+		SQLException								IndexOutOfBoundsException
+													
+													ArrayIndexOutOfBoundsException
+	
+													StringIndexOutOfBoundsException
+															
+=======================================================================================
+18) What is try-with-resources in java
+=======================================================================================
+
+		try-with-resources
+		=============
+		we can placed all implemented auto
+
+=======================================================================================
+19) What are concurrent collections in java?
+=======================================================================================
+=======================================================================================
+20) Difference between Interfaces & Abstract classes
+=======================================================================================
+=======================================================================================
+21) What is Shallow Cloning & Deep Cloning?
+=======================================================================================
+=======================================================================================
+22) What is the diff between filter ( ) and map ( ) methods in Stream API?
+=======================================================================================
+=======================================================================================
+23) What is the purpose of User Defined Exceptions?
+=======================================================================================
+=======================================================================================
+24) What is Factory Design Pattern?
+=======================================================================================
+=======================================================================================
+25) What is diff between Concurrent HashMap and HashMap?
+=======================================================================================
+=======================================================================================
+26) What is Weak Hash Map in Java?
+=======================================================================================
+=======================================================================================
+27) How to read File Data Using Java 8?
+=======================================================================================
+=======================================================================================
+28) Program to generate Random Text using Java
+=======================================================================================
+=======================================================================================
+29) Program to generate OTP using Java
+=======================================================================================
+=======================================================================================
+30) Program to check String contains only alphabets or not
+=======================================================================================
+=======================================================================================
+31) What are the rules for Method Overriding?
+=======================================================================================
+=======================================================================================
+32) What are variable arguments in Java?
+=======================================================================================
+=======================================================================================
+33) How to increase heap size while running java program?
+=======================================================================================
+=======================================================================================
+34) What are Generics in java ?
+=======================================================================================
+=======================================================================================
+35) What is Auto Boxing and Auto Un-boxing ?
+=======================================================================================
+=======================================================================================
+36) How to catch multiple exceptions using single catch block ?
+=======================================================================================
+=======================================================================================
+37) What is StringJoiner class ?
+=======================================================================================
+=======================================================================================
+38) What is SplIterator?
+=======================================================================================
+=======================================================================================
+Core Java Mr. Ashok
+=======================================================================================
+=======================================================================================
+39) Can we declare method as abstract and final?
+=======================================================================================
+=======================================================================================
+40) How to create user defined Immutable classes in Java?
+=======================================================================================
+=======================================================================================
+41) How to sort 0's and 1's in given array
+=======================================================================================
+=======================================================================================
+Input: {1,0,1,0,0,1,1}
+Output: {0,0,0,1,1,1,1}
+42) How to filter employees based on given salary using stream api
+=======================================================================================
+=======================================================================================
+43) What is the difference between Lambda Expression & Method References
+=======================================================================================
+=======================================================================================
+44) What is the use of default and static methods in interface
+=======================================================================================
+=======================================================================================
+45) What is Optional class in java 8 ?
+=======================================================================================
+=======================================================================================
+46) What is Completable Feature in Java?
+=======================================================================================
+=======================================================================================
+47) What are the class loaders available in Java ?
+=======================================================================================
+=======================================================================================
+48) What is Thread Local class ?
+=======================================================================================
+=======================================================================================
+49) Can we overload main ( ) method in java class ?
+=======================================================================================
+=======================================================================================
+50) Can we run java program without main ( ) method ?
+=======================================================================================
+=======================================================================================
+51) What is Polymorphism explain with example?
+=======================================================================================
+=======================================================================================
+52) What are SOLID oops principles?
+=======================================================================================
+=======================================================================================
+53) What is Encapsulation with Example
+=======================================================================================
+=======================================================================================
+
+
+
+
+
+
+
+

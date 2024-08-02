@@ -1,0 +1,163 @@
+1]Concurrent collection
+2]Shallow cloning and deepcloning
+3]Constructor chaining
+4]Factory design pattern
+5]Concurrent hashma and hashmap
+6]Week Hashmap
+7]How to read file date using java 8
+8]Generate random text in java.
+====================================================================================================================================================
+import java.util.Random;
+
+public class RandomTextGenerator {
+    public static void main(String[] args) {
+        int textLength = 10; // Change the length of the random text as needed
+        String randomText = generateRandomText(textLength);
+        System.out.println("Random Text: " + randomText);
+    }
+
+    public static String generateRandomText(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder randomText = new StringBuilder(length);
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            char randomChar = characters.charAt(randomIndex);
+            randomText.append(randomChar);
+        }
+
+        return randomText.toString();
+    }
+}
+
+====================================================================================================================================================
+
+9]How to generate OTP in java
+====================================================================================================================================================
+import java.util.Random;
+
+public class OTPGenerator {
+    public static void main(String[] args) {
+        int otpLength = 6; // Change the length of OTP as needed
+        String otp = generateNumericOTP(otpLength);
+        System.out.println("Generated OTP: " + otp);
+    }
+
+    public static String generateNumericOTP(int length) {
+        StringBuilder otp = new StringBuilder(length);
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            int randomDigit = random.nextInt(10); // Generate a random digit (0-9)
+            otp.append(randomDigit);
+        }
+
+        return otp.toString();
+    }
+}
+====================================================================================================================================================
+10]String contains alphabets or not
+====================================================================================================================================================
+class GFG {
+ 
+    // Function to check if a string
+    // contains only alphabets
+    public static boolean onlyAlphabets(
+      String str, int n)
+    {
+ 
+        // Return false if the string
+        // has empty or null
+        if (str == null || str == "") {
+            return false;
+        }
+ 
+        // Traverse the string from
+        // start to end
+        for (int i = 0; i < n; i++) {
+            // Check if the specified
+            // character is not a letter then
+            // return false,
+            // else return true
+            if (!Character
+                .isLetter(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+ 
+    // Driver Code
+    public static void main(String args[])
+    {
+        // Given string str
+        String str = "GeeksforGeeks";
+        int len = str.length();
+ 
+        // Function Call
+        System.out.println(
+          onlyAlphabets(str, len));
+    }
+}
+
+====================================================================================================================================================
+11]Variable arguments
+===================
+Here's how you can use varargs in Java:
+
+java
+Copy code
+public void myMethod(String... args) {
+    // Code to process args
+}
+Here, args is an array of String objects, and you can pass any number of String arguments to myMethod.
+
+Here are some key points to note about varargs in Java:
+
+Varargs must be the last parameter in the method's parameter list. For example, this is valid:
+
+java
+Copy code
+public void myMethod(int x, String... args) {
+    // Code here
+}
+But this is not valid:
+
+java
+Copy code
+public void myMethod(String... args, int x) {
+    // This will result in a compilation error
+}
+You can also use other parameters before the varargs parameter. For example:
+
+java
+Copy code
+public void myMethod(String prefix, int count, String... args) {
+    // Code here
+}
+Inside the method, you can treat the varargs parameter as an array. For example, you can loop through the elements or access them by index.
+
+java
+Copy code
+public void myMethod(String... args) {
+    for (String arg : args) {
+        System.out.println(arg);
+    }
+}
+You can call a varargs method with individual arguments, an array of arguments, or a combination of both.
+
+java
+Copy code
+myMethod("Hello", "World");
+myMethod("Java");
+myMethod("Programming", "is", "fun");
+myMethod(); // You can also call it with no arguments
+=========================================================================================
+12]Auto unboxing and
+13]String joiner 1.8
+14]Spliterator 1.8
+15]Lambda and method ref
+16]Completable feature
+17]Thread local class in java
+18]Solid principles

@@ -1,0 +1,244 @@
+1) What is single source file execution
+2) variables
+3) What is static control flow
+4) What is instance control flow
+5) What is constructor
+6) What is hashcode ( ) method
+7) What is toString ( ) method
+8) Why we need private constructor
+9) What is singleton class ?
+10) How to make java class as singleton class
+11) How to access private variables outside of class
+
+1) What is single source file execution
+===========================
+We can   execute   java program without compilation
+we can run directly from java 11 onwards
+
+2) variables
+========
+it can be store the data
+
+3) What is static control flow
+=====================
+
+		memory allocation[bmv]		program execution
+		[from bottom to top]		[from top to bottom]
+		=============		=============
+
+		static block		static block
+
+		static method		static method
+
+		static variable		static variable
+
+
+4) What is instance control flow
+=======================
+		memory allocation		program execution
+		[from bottom to top]		[from top to bottom]
+		=============		=============
+
+		instance block		instance block
+
+		Constructor		Construtor
+
+		instance method		instance method	
+
+		instance variable		instance variable
+
+
+5) What is constructor
+================
+   		->it is a special type of method
+
+		->which is used to initailized the instance variables or objects
+
+		Type of constructors
+		===============
+		1)Default constructor
+
+		2)No args constructor
+
+		3)Parameteraised constructor
+		
+	1)Default constructor
+	===============
+		it will provide the jvm if we dont have par or no-args constructors
+	
+		classname(){};
+
+	2)No args constructor
+	================
+		classname(){ syso(msg)}
+
+	3)Parameteraised constructor
+	======================
+		classname(int age){ this.age=age;}
+	
+	Note;If there is par or no-args constructor 	is there, then default constructor overriden
+
+	imp points to remember
+	=================
+	when ever object will created at time our constructor will execte
+
+	constructor can execute only once per object creation
+
+	constructor 	 ==> ex: email registration only once, fb account creation, 
+
+	method/call	  ==> ex; login will be number of times
+
+6) What is hashcode ( ) method
+======================
+	hashCode() method is a super class Object class methd
+
+	Jvm will generate unique code for each and every object, when we call the hashCode() method
+
+7) What is toString ( ) method
+======================
+	toString() method is a super class Object class methd
+	
+	it is used to print our field in one format[our own format]
+	
+	When we print object reference it will print super class  classname+@+hexaHashCode()
+	
+	If we have our toString method it will print our toString method it will override Object class to string method
+
+8) Why we need private constructor
+=========================
+	we can't give access to other person for object creation then  we can make out constructor make private
+
+9) What is singleton class ?
+====================
+		A class which is having only one object is called singletone class
+
+		we can't allow to create object to other for memory problems
+
+		in realtime project 95% we can use singletone class only
+
+
+	Class Login
+	{
+                    private static Login instance=null;
+
+  	  private Login()
+		{
+		}
+
+		puble static Login getInstance()
+		{
+			if(instance==null)
+			{
+			instance=new Login();
+			}
+			return instance;
+		}
+		
+		
+	}
+
+	
+
+ 	Class Main
+	{
+		public static void main(String... args)
+		{
+			Login l1=Login.getInstance();
+			syso(l1)
+ 			Login l2=Login.getInstance();
+			Syso(l2);
+		}
+	}
+
+
+
+
+10) How to make java class as singleton class
+=================================
+->Step 1: Private constructor
+->Step 2: Private static instance variable
+->Step 3: Public static method to get the instance
+->Step-4:Other methods and fields can be added here[If we want]
+step:1
+-------
+	Class Login
+	{
+		private static Login reference = null;
+		
+		private Login(){}
+	
+		public static Login getInstance()
+		{
+			if(instance == mull)
+			{
+				instance = new Login();
+			}
+
+			return   instance;
+		}	
+	}
+
+
+step:2
+--------	
+	Class Demo
+	{
+		public static void main(String... args) 
+		{
+			Login L1=Login.getInstance();
+			System.out.println(L1);
+			System.out.println(L1.hashCode());
+	
+			Login L2=Login.getInstance();
+			System.out.println(L2);
+			System.out.println((L2.hashCode);
+		}
+	}
+
+
+
+11) How to access private variables outside of class
+======================================
+step-1:
+---------
+	Class Employee
+	{
+		private int age;
+		
+		public void printAge()
+		{
+			System.out.println("Age :"+age);
+		}
+	}
+
+
+step-2:
+---------
+
+	Class Demo
+	{
+		public static void main(String... args) 
+		{
+						//JVM will load the class
+		Class clz=Class.forName("Employee"); 	 //we can give fully qualified name here
+		Object obj=clz.newInstance();
+		Employee emp=(Employee) obj;		//typecasting from super to sub class
+		Field f=clz.getDeclarationField("age");
+		f.setAccessible(true);			//we can get access  private variables also 
+		f.set(obj,20);
+		f.printAge();
+		}
+
+	}
+
+
+Note: Reflection api is used for developing IDE's[ It will load all the classes,methods,fields..]
+
+
+
+
+
+
+
+
+
