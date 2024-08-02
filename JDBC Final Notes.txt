@@ -120,6 +120,7 @@ How to run JAR file
 ====================
 
 Syntax :    java   -jar  <jar-file-name.jar>
+            java   -jar lombok.jar
 
 ====================
 How to Extract JAR file
@@ -147,7 +148,7 @@ Task
 What is the difference between PATH & CLASSPATH ?
 ============================================
 
--> PATH is used to locate where our java s/w got installed
+-> PATH is used to locate "where our java s/w got installed"
 
 -> CLASSPATH is used locate where our .class files / jar files are available
 
@@ -250,7 +251,9 @@ Note: SQL (Structured Query Language) queries will be used to communicate Databa
 
 => To communicate with MySQL DB server we can use "MySQL Workbench" as a client software
 
-Note: SQL Developer  & MySQL Workbench softwares are used to execute SQL queries
+=>=> To communicate with postgres DB server we can use "pg admin" as a client software
+
+Note: SQL Developer  & MySQL Workbench,pg admin softwares are used to execute SQL queries
 
 ======
 JDBC
@@ -299,7 +302,7 @@ JDBC API Components
 =====================
 
 ---------------
-Interfaces
+Interfaces[DCS,PCRR]
 ---------------
 Driver
 Connection
@@ -324,10 +327,10 @@ SQLException
 
 
 ============================
-Steps to develop JDBC Program
+Steps to develop JDBC Program[RGCpcEPC]
 ============================
 
-1) Load the Driver class
+1) Load/Register the Driver class
 
 2) Get Connection from Database
 
@@ -640,12 +643,12 @@ boolean last ( ) : To move cursor to last row
 
 boolean previous ( ) : To move cursor to previous row
 
-int getInt (int index ) : To get current row column data based on column index
+int getInt (int index ) : To get current row column data "based on column index"
 
-int getInt (String columnName ) : To get current row column data based on column index
+int getInt (String columnName ) : To get current row column data "based on column index"
 
 ==================
-Prepared Statement
+Pre par ed Statement
 ==================
 
 => PreparedStatement is used to execute both SELECT & NON-SELECT Queries
@@ -683,6 +686,36 @@ name : ashok--
 pwd: 123
 
 		select * from users where uname=ashok  -- and pwd = 123;
+
+NOTE::
+1. Basic SQL Injection
+----------------------
+String query = "SELECT * FROM users WHERE uname = '" + name + "' AND pwd = '" + pwd + "'";
+
+Attack Input:
+name: ashok
+pwd: anything' OR '1'='1
+SELECT * FROM users WHERE uname = 'ashok' AND pwd = 'anything' OR '1'='1';
+This always returns true for the password check, potentially allowing unauthorized access.
+
+2. Union-Based SQL Injection
+----------------------------
+String query = "SELECT uname, pwd FROM users WHERE uname = '" + name + "'";
+
+Attack Input:
+name: ashok' UNION SELECT null, null; --
+SELECT uname, pwd FROM users WHERE uname = 'ashok' UNION SELECT null, null; --';
+This can allow attackers to retrieve data from another table.
+3. Error-Based SQL Injection
+---------------------------
+String query = "SELECT * FROM users WHERE uname = '" + name + "' AND pwd = '" + pwd + "'";
+Attack Input:
+name: ashok' AND 1=CONVERT(int,(SELECT @@version)); --
+pwd: anything
+SELECT * FROM users WHERE uname = 'ashok' AND 1=CONVERT(int,(SELECT @@version)); --' AND pwd = 'anything';
+
+
+
 
 
 
