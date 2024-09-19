@@ -53,6 +53,18 @@ public class No01SelectBookGreaterThan {
 		
 		
 	}
-	
+	/*
+ 101, Apple, 1.99
+102, Orange, 0.99
+103, Banana, 0.59
+104, Grapes, 2.99
+105, Mango, 1.49
+106, Pineapple, 3.50
+107, Watermelon, 4.00
+108, Blueberry, 5.99
+109, Strawberry, 3.79
+110, Kiwi, 1.89
+
+	*/
 
 }
